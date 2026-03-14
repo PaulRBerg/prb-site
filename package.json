@@ -1,0 +1,46 @@
+{
+  "name": "@prb/site",
+  "version": "0.0.1",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist && mkdir -p public && rm -rf public/pagefind && cp -r dist/pagefind public/pagefind",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^6.0.4",
+    "dayjs": "^1.11.20",
+    "lodash.kebabcase": "^4.1.1",
+    "remark-collapse": "^0.1.2",
+    "remark-toc": "^9.0.0",
+    "satori": "^0.25.0",
+    "sharp": "^0.34.3",
+    "slugify": "^1.6.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.7",
+    "@pagefind/default-ui": "^1.4.0",
+    "@shikijs/transformers": "^4.0.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/lodash.kebabcase": "^4.1.9",
+    "@typescript/native-preview": "^7.0.0-dev.20260314.1",
+    "oxfmt": "^0.40.0",
+    "oxlint": "^1.55.0",
+    "pagefind": "^1.4.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3",
+    "ultracite": "^7.3.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

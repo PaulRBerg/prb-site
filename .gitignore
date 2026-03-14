@@ -1,0 +1,9 @@
+# Directories
+.astro/
+dist/
+.vite/
+node_modules/
+public/pagefind/
+
+# Files
+*.log*

@@ -1,0 +1,35 @@
+---
+import Card from "@/components/Card.astro";
+import { SITE } from "@/config";
+import Main from "@/layouts/Main.astro";
+import SiteShell from "@/layouts/SiteShell.astro";
+import { getPostsByTag, getTagData, getVisibleBlogPosts } from "@/utils/blog";
+import type { BlogEntry, BlogTag } from "@/utils/blog";
+
+interface Props {
+  posts: BlogEntry[];
+  tag: BlogTag;
+}
+
+export const getStaticPaths = async () => {
+  const posts = await getVisibleBlogPosts();
+
+  return getTagData(posts).map((tag) => ({
+    params: { tag: tag.slug },
+    props: {
+      posts: getPostsByTag(posts, tag.slug),
+      tag,
+    },
+  }));
+};
+
+const { posts, tag } = Astro.props as Props;
+---
+
+<SiteShell title={`Tag: ${tag.name} | ${SITE.title}`}>
+  <Main pageTitle={tag.name} pageDesc={`Posts tagged ${tag.name}.`}>
+    <ul>
+      {posts.map((post) => <Card {...post} />)}
+    </ul>
+  </Main>
+</SiteShell>

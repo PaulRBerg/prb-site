@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": [
+    "./node_modules/ultracite/config/oxlint/core/.oxlintrc.json",
+    "./node_modules/ultracite/config/oxlint/astro/.oxlintrc.json"
+  ],
+  "rules": {
+    "import/no-relative-parent-imports": "off",
+    "unicorn/filename-case": "off"
+  },
+  "settings": {
+    "typescript": {
+      "typeAware": true,
+      "typeCheck": true
+    }
+  }
+}
