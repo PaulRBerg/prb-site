@@ -23,14 +23,10 @@ const { tagName, size = "lg", count } = Astro.props;
       class:list={["opacity-80", { "size-5": size === "lg" }, { "size-4": size === "sm" }]}
     />
     {tagName}
-    {
-      typeof count === "number" && (
-        <span
-          class:list={["opacity-70", { "text-xs": size === "sm" }, { "text-sm": size === "lg" }]}
-        >
-          ({count})
-        </span>
-      )
-    }
+    {typeof count === "number" && <span
+      class:list={["opacity-70", { "text-xs": size === "sm" }, { "text-sm": size === "lg" }]}
+    >
+      ({count})
+    </span>}
   </span>
 </li>

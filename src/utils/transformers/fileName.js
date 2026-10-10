@@ -1,21 +1,22 @@
 /**
- * CustomShiki transformer that adds file name labels to code blocks.
- *
- * This transformer looks for the `file="filename"` meta attribute in code blocks
- * and creates a styled label showing the filename. It supports two different
- * styling options and can optionally hide the green dot indicator.
- *
- * @param {Object} options - Configuration options for the transformer
- * @param {string} [options.style] - The styling variant to use
+ * @typedef {object} TransformerFileNameOptions
+ * @property {"v1" | "v2"} [style] - The styling variant to use
  *   - `"v1"`: Tab-style with rounded top corners, positioned at top-left
  *   - `"v2"`: Badge-style with border, positioned at top-left with offset
- * @param {boolean} [options.hideDot] - Whether to hide the green dot indicator
+ * @property {boolean} [hideDot] - Whether to hide the green dot indicator
+ */
+
+/**
+ * Adds a filename label to code blocks with a `file="filename"` meta attribute.
+ *
+ * @param {TransformerFileNameOptions} [options] - Transformer configuration
+ * @returns {import("shiki").ShikiTransformer} Shiki transformer with a `pre` hook
  */
 export const transformerFileName = ({ style = "v2", hideDot = false } = {}) => ({
   pre(node) {
     // Add CSS custom property to the node
     const fileNameOffset = style === "v1" ? "0.75rem" : "-0.75rem";
-    node.properties.style = `${node.properties.style || ""}--file-name-offset: ${fileNameOffset};`;
+    node.properties.style = `${node.properties.style ?? ""}--file-name-offset: ${fileNameOffset};`;
 
     const raw = this.options.meta?.__raw?.split(" ");
 
@@ -23,19 +24,20 @@ export const transformerFileName = ({ style = "v2", hideDot = false } = {}) => (
       return;
     }
 
+    /** @type {Map<string, string>} */
     const metaMap = new Map();
 
     for (const item of raw) {
       const [key, value] = item.split("=");
-      if (!key || !value) {
+      if (key === undefined || key === "" || value === undefined || value === "") {
         continue;
       }
-      metaMap.set(key, value.replaceAll(/["'`]/g, ""));
+      metaMap.set(key, value.replaceAll(/["'`]/gu, ""));
     }
 
     const file = metaMap.get("file");
 
-    if (!file) {
+    if (file === undefined || file === "") {
       return;
     }
 

@@ -11,7 +11,7 @@ const reflectPreference = (): void => {
   document.documentElement.dataset.theme = themeValue;
   document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
 
-  const { body } = document;
+  const body = document.querySelector("body");
   if (body) {
     const computedStyles = window.getComputedStyle(body);
     const bgColor = computedStyles.backgroundColor;
@@ -24,7 +24,7 @@ const setPreference = (): void => {
   reflectPreference();
 };
 
-if (window.theme) {
+if (window.theme !== undefined && window.theme !== null) {
   window.theme.setPreference = setPreference;
   window.theme.reflectPreference = reflectPreference;
 } else {
@@ -65,7 +65,7 @@ document.addEventListener("astro:after-swap", setThemeFeature);
 document.addEventListener("astro:before-swap", (event) => {
   const bgColor = document.querySelector("meta[name='theme-color']")?.getAttribute("content");
 
-  if (bgColor) {
+  if (bgColor !== undefined && bgColor !== null && bgColor !== "") {
     event.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content", bgColor);
   }
 });

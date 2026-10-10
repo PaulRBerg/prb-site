@@ -67,11 +67,9 @@ const socialImageURL = new URL(ogImage, Astro.url).toString();
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
-    {
-      structuredData && (
-        <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
-      )
-    }
+    {structuredData && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+    )}
 
     <link
       rel="alternate"
@@ -82,11 +80,9 @@ const socialImageURL = new URL(ogImage, Astro.url).toString();
 
     <meta name="theme-color" content="" />
 
-    {
-      PUBLIC_GOOGLE_SITE_VERIFICATION && (
-        <meta name="google-site-verification" content={PUBLIC_GOOGLE_SITE_VERIFICATION} />
-      )
-    }
+    {PUBLIC_GOOGLE_SITE_VERIFICATION && (
+      <meta name="google-site-verification" content={PUBLIC_GOOGLE_SITE_VERIFICATION} />
+    )}
 
     <ClientRouter />
 

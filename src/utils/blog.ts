@@ -38,7 +38,7 @@ const getSortTimestamp = (post: BlogEntry) =>
 export const isVisibleBlogPost = ({ data }: BlogEntry) => {
   const isPublishTimePassed =
     Date.now() > new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
-  return !data.draft && (import.meta.env.DEV || isPublishTimePassed);
+  return data.draft !== true && (import.meta.env.DEV || isPublishTimePassed);
 };
 
 export const sortBlogPosts = (posts: BlogEntry[]) =>

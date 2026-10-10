@@ -6,7 +6,7 @@ import { SITE } from "@/config";
 export const BLOG_PATH = "src/content/blog";
 const publicOrRemoteImage = z
   .string()
-  .refine((value) => value.startsWith("/") || /^https?:\/\//.test(value), {
+  .refine((value) => value.startsWith("/") || /^https?:\/\//u.test(value), {
     message: "Expected a public path or absolute URL"
   });
 

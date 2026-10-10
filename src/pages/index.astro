@@ -34,9 +34,16 @@ const structuredData = {
       >
         <div
           class="absolute inset-y-0 left-0 w-[24rem] sm:w-[32rem]"
-          style="background: radial-gradient(circle at 28% 32%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, color-mix(in srgb, var(--accent) 10%, transparent) 26%, color-mix(in srgb, var(--accent) 6%, transparent) 48%, transparent 76%);"
-        >
-        </div>
+          style="
+            background: radial-gradient(
+              circle at 28% 32%,
+              color-mix(in srgb, var(--accent) 14%, transparent) 0%,
+              color-mix(in srgb, var(--accent) 10%, transparent) 26%,
+              color-mix(in srgb, var(--accent) 6%, transparent) 48%,
+              transparent 76%
+            );
+          "
+        ></div>
       </div>
 
       <div class="relative grid gap-8 sm:grid-cols-[minmax(0,16rem)_1fr] sm:items-center sm:gap-10">
@@ -87,37 +94,29 @@ const structuredData = {
       </div>
     </section>
 
-    {
-      featuredPosts.length > 0 && (
-        <section
-          id="featured"
-          class:list={["pt-12 pb-6", { "border-b border-border": recentPosts.length > 0 }]}
-        >
-          <h2 class="text-2xl font-semibold tracking-wide">Featured Posts</h2>
-          <ul>
-            {featuredPosts.map((data) => (
-              <Card variant="h3" {...data} />
-            ))}
-          </ul>
-        </section>
-      )
-    }
+    {featuredPosts.length > 0 && <section
+      id="featured"
+      class:list={["pt-12 pb-6", { "border-b border-border": recentPosts.length > 0 }]}
+    >
+      <h2 class="text-2xl font-semibold tracking-wide">Featured Posts</h2>
+      <ul>
+        {featuredPosts.map((data) => (
+          <Card variant="h3" {...data} />
+        ))}
+      </ul>
+    </section>}
 
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && (
-                  <Card variant="h3" dateFormat="MMMM D, YYYY" showReadingTime {...data} />
-                ),
-            )}
-          </ul>
-        </section>
-      )
-    }
+    {recentPosts.length > 0 && <section id="recent-posts" class="pt-12 pb-6">
+      <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+      <ul>
+        {recentPosts.map(
+          (data, index) =>
+            index < SITE.postPerIndex && (
+              <Card variant="h3" dateFormat="MMMM D, YYYY" showReadingTime {...data} />
+            ),
+        )}
+      </ul>
+    </section>}
 
     <div class="my-8 text-center">
       <LinkButton href="/posts/">

@@ -1,3 +1,4 @@
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -14,6 +15,7 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 
 // https://astro.build/config
 export default defineConfig({
+  compressHTML: true,
   env: {
     schema: {
       PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
@@ -39,7 +41,9 @@ export default defineConfig({
   },
   integrations: [mdx(), sitemap()],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    processor: unified({
+      remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]]
+    }),
     shikiConfig: {
       defaultColor: false,
       themes: { dark: "night-owl", light: "min-light" },

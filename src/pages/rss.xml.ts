@@ -5,7 +5,7 @@ import { getVisibleBlogPosts } from "@/utils/blog";
 
 export const GET = async () => {
   const posts = await getVisibleBlogPosts();
-  return rss({
+  return await rss({
     description: SITE.desc,
     items: posts.map(({ data, id, filePath }) => ({
       description: data.description,

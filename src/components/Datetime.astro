@@ -41,16 +41,15 @@ const date = datetime.format(dateFormat);
   {isModified && <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>Updated:</span>}
   <time
     class:list={["text-sm", { "sm:text-base": size === "lg" }]}
-    datetime={datetime.toISOString()}>{date}</time
+    datetime={datetime.toISOString()}
+    >{date}</time
   >
-  {
-    readingTime && (
-      <>
-        <span aria-hidden="true" class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
-          •
-        </span>
-        <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>{readingTime}</span>
-      </>
-    )
-  }
+  {readingTime && (
+    <>
+      <span aria-hidden="true" class:list={["text-sm", { "sm:text-base": size === "lg" }]}>
+        •
+      </span>
+      <span class:list={["text-sm", { "sm:text-base": size === "lg" }]}>{readingTime}</span>
+    </>
+  )}
 </div>

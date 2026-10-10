@@ -4,11 +4,11 @@ export const getPostTransitionName = (title: string) => slugifyStr(title.replace
 
 export const getReadingTime = (content: string) => {
   const sanitizedContent = content
-    .replaceAll(/```[\s\S]*?```/g, " ")
-    .replaceAll(/`[^`]*`/g, " ")
-    .replaceAll(/!\[[^\]]*]\([^)]*\)/g, " ")
-    .replaceAll(/\[([^\]]*)]\([^)]*\)/g, " $1 ")
-    .replaceAll(/<[^>]+>/g, " ");
+    .replaceAll(/```[\s\S]*?```/gu, " ")
+    .replaceAll(/`[^`]*`/gu, " ")
+    .replaceAll(/!\[[^\u005D]*\]\([^)]*\)/gu, " ")
+    .replaceAll(/\[(?<text>[^\u005D]*)\]\([^)]*\)/gu, " $<text> ")
+    .replaceAll(/<[^>]+>/gu, " ");
 
   const wordCount = sanitizedContent.match(/\b[\p{L}\p{N}']+\b/gu)?.length ?? 0;
   const minutes = Math.max(1, Math.ceil(wordCount / 200));

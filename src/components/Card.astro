@@ -44,21 +44,17 @@ const readingTime = showReadingTime ? getReadingTime(body ?? "") : undefined;
   </a>
   <Datetime {...props} {dateFormat} readingTime={readingTime} />
   <div class="mt-3 flex items-start gap-4">
-    {
-      showImage && cardImage && (
-        <a href={postHref} class="hidden shrink-0 sm:block">
-          <img
-            src={cardImage}
-            alt={title}
-            width="140"
-            height="79"
-            loading="lazy"
-            decoding="async"
-            class="h-[79px] w-[140px] rounded-md border border-border object-cover shadow-sm"
-          />
-        </a>
-      )
-    }
+    {showImage && cardImage && <a href={postHref} class="hidden shrink-0 sm:block">
+      <img
+        src={cardImage}
+        alt={title}
+        width="140"
+        height="79"
+        loading="lazy"
+        decoding="async"
+        class="h-[79px] w-[140px] rounded-md border border-border object-cover shadow-sm"
+      />
+    </a>}
     <p class="flex-1">{description}</p>
   </div>
 </li>

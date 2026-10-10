@@ -7,7 +7,7 @@ const syncBackButton = () => {
   const backButton = document.querySelector<HTMLAnchorElement>("[data-back-button]");
   const backUrl = sessionStorage.getItem(BACK_URL_STORAGE_KEY);
 
-  if (backButton && backUrl) {
+  if (backButton && backUrl !== null && backUrl !== "") {
     backButton.href = backUrl;
   }
 };
@@ -20,7 +20,7 @@ const setBackUrl = (backUrl: string) => {
 const syncNavigationState = () => {
   const backUrl = getBackUrlFromPage();
 
-  if (backUrl) {
+  if (backUrl !== undefined && backUrl !== "") {
     setBackUrl(backUrl);
     return;
   }

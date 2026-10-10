@@ -1,4 +1,4 @@
-import type { APIRoute } from "astro";
+import type { APIContext } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import { generateOgImageForPost } from "@/utils/generateOgImages";
@@ -13,14 +13,14 @@ export const getStaticPaths = async () => {
   const posts = await getRouteableBlogPosts();
 
   return posts
-    .filter((post) => !post.data.ogImage)
+    .filter((post) => post.data.ogImage === undefined || post.data.ogImage === "")
     .map((post) => ({
       params: { slug: getPath(post.id, post.filePath, false) },
       props: post
     }));
 };
 
-export const GET: APIRoute = ({ props }) => {
+export const GET = ({ props }: APIContext<CollectionEntry<"blog">>) => {
   if (!SITE.dynamicOgImage) {
     return new Response(null, {
       status: 404,
@@ -28,7 +28,7 @@ export const GET: APIRoute = ({ props }) => {
     });
   }
 
-  const buffer = generateOgImageForPost(props as CollectionEntry<"blog">);
+  const buffer = generateOgImageForPost(props);
   return new Response(new Uint8Array(buffer), {
     headers: { "Content-Type": "image/png" }
   });
