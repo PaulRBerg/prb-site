@@ -18,7 +18,7 @@ alias d := dev
 
 # Build for production
 @build:
-    na pnpm build
+    na run build
 alias b := build
 
 # Preview production build
@@ -72,13 +72,13 @@ alias ow := oxlint-write
 # Check formatting with oxfmt
 [group("checks")]
 @oxfmt-check:
-    rg --files -0 -g 'package.json' -g '.oxlintrc.json' -g '.oxfmtrc.json' -g '.prettierrc.mjs' -g 'astro.config.mts' -g 'src/**/*.ts' -g 'src/**/*.js' | xargs -0 pnpm exec oxfmt --check
+    rg --files -0 -g 'package.json' -g '.oxlintrc.json' -g '.oxfmtrc.json' -g '.prettierrc.mjs' -g 'astro.config.mts' -g 'src/**/*.ts' -g 'src/**/*.js' | xargs -0 na oxfmt --check
 alias ofc := oxfmt-check
 
 # Format with oxfmt
 [group("checks")]
 @oxfmt-write:
-    rg --files -0 -g 'package.json' -g '.oxlintrc.json' -g '.oxfmtrc.json' -g '.prettierrc.mjs' -g 'astro.config.mts' -g 'src/**/*.ts' -g 'src/**/*.js' | xargs -0 pnpm exec oxfmt --write
+    rg --files -0 -g 'package.json' -g '.oxlintrc.json' -g '.oxfmtrc.json' -g '.prettierrc.mjs' -g 'astro.config.mts' -g 'src/**/*.ts' -g 'src/**/*.js' | xargs -0 na oxfmt --write
 alias ofw := oxfmt-write
 
 # Check Astro formatting with Prettier
