@@ -26,7 +26,7 @@ Inside of your Astro project, you'll see the following folders and files:
 │   ├── content/
 │   ├── layouts/
 │   └── pages/
-├── astro.config.mjs
+├── astro.config.mts
 ├── README.md
 ├── package.json
 └── tsconfig.json
