@@ -1,15 +1,8 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@/config";
-import { slugifyStr } from "@/utils/slugify";
 
 export type BlogEntry = CollectionEntry<"blog">;
-
-export interface BlogTag {
-  count: number;
-  name: string;
-  slug: string;
-}
 
 export interface BlogMonthGroup {
   month: number;
@@ -42,8 +35,6 @@ const getPublishedTimestamp = (post: BlogEntry) => new Date(post.data.pubDatetim
 const getSortTimestamp = (post: BlogEntry) =>
   new Date(post.data.modDatetime ?? post.data.pubDatetime).getTime();
 
-export const getTagSlug = (tag: string) => slugifyStr(tag);
-
 export const isVisibleBlogPost = ({ data }: BlogEntry) => {
   const isPublishTimePassed =
     Date.now() > new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
@@ -59,35 +50,6 @@ export const getVisibleBlogPosts = async () => {
 };
 
 export const getRouteableBlogPosts = getVisibleBlogPosts;
-
-export const getTagData = (posts: BlogEntry[]) => {
-  const tags = new Map<string, BlogTag>();
-
-  for (const post of posts) {
-    for (const tagName of post.data.tags) {
-      const slug = getTagSlug(tagName);
-      const currentTag = tags.get(slug);
-
-      if (currentTag) {
-        currentTag.count += 1;
-        continue;
-      }
-
-      tags.set(slug, {
-        count: 1,
-        name: tagName,
-        slug
-      });
-    }
-  }
-
-  return [...tags.values()].toSorted((tagA, tagB) => tagA.slug.localeCompare(tagB.slug));
-};
-
-export const getPostsByTag = (posts: BlogEntry[], tag: string) =>
-  sortBlogPosts(
-    posts.filter((post) => post.data.tags.some((postTag) => getTagSlug(postTag) === tag))
-  );
 
 export const groupBlogPostsByYearAndMonth = (posts: BlogEntry[]) => {
   const groupedPosts = new Map<number, Map<number, BlogEntry[]>>();
