@@ -94,6 +94,22 @@ alias pc := prettier-check
 alias pw := prettier-write
 
 # ---------------------------------------------------------------------------- #
+#                                    DEPLOY                                    #
+# ---------------------------------------------------------------------------- #
+
+# Deploy preview to Vercel
+[group("deploy")]
+@deploy-preview:
+    na vercel
+alias dp := deploy-preview
+
+# Deploy to production on Vercel
+[group("deploy")]
+@deploy-prod:
+    na vercel --prod
+alias dpr := deploy-prod
+
+# ---------------------------------------------------------------------------- #
 #                                   UTILITIES                                  #
 # ---------------------------------------------------------------------------- #
 

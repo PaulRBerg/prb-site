@@ -5,5 +5,9 @@ dist/
 node_modules/
 public/pagefind/
 
+# Environment
+.env*
+.envrc
+
 # Files
 *.log*

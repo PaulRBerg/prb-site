@@ -38,7 +38,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
-    "ultracite": "^7.3.0"
+    "ultracite": "^7.3.0",
+    "vercel": "^50.32.5"
   },
   "engines": {
     "node": ">=22.12.0"
