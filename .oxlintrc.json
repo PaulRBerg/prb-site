@@ -4,10 +4,19 @@
     "./node_modules/ultracite/config/oxlint/core/.oxlintrc.json",
     "./node_modules/ultracite/config/oxlint/astro/.oxlintrc.json"
   ],
+  "ignorePatterns": [".vercel/"],
   "rules": {
     "import/no-relative-parent-imports": "off",
     "unicorn/filename-case": "off"
   },
+  "overrides": [
+    {
+      "files": ["**/*.astro"],
+      "rules": {
+        "unicorn/consistent-function-scoping": "off"
+      }
+    }
+  ],
   "settings": {
     "typescript": {
       "typeAware": true,
