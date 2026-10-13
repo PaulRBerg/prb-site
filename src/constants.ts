@@ -1,12 +1,12 @@
 import type { Props } from "astro";
-import IconMail from "@/assets/icons/IconMail.svg";
-import IconBrandX from "@/assets/icons/IconBrandX.svg";
-import IconGitHub from "@/assets/icons/IconGitHub.svg";
-import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
-import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
-import IconFacebook from "@/assets/icons/IconFacebook.svg";
-import IconTelegram from "@/assets/icons/IconTelegram.svg";
-import IconPinterest from "@/assets/icons/IconPinterest.svg";
+import IconMail from "@tabler/icons/outline/mail.svg";
+import IconBrandX from "@tabler/icons/outline/brand-x.svg";
+import IconGitHub from "@tabler/icons/outline/brand-github.svg";
+import IconLinkedin from "@tabler/icons/outline/brand-linkedin.svg";
+import IconWhatsapp from "@tabler/icons/outline/brand-whatsapp.svg";
+import IconFacebook from "@tabler/icons/outline/brand-facebook.svg";
+import IconTelegram from "@tabler/icons/outline/brand-telegram.svg";
+import IconPinterest from "@tabler/icons/outline/brand-pinterest.svg";
 
 export interface IconLinkDefinition {
   name: string;
