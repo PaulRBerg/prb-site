@@ -1,0 +1,4 @@
+.serena/
+
+# Prettier turns Slidev slide separators into prose
+slides/*/slides.md
