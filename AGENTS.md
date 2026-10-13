@@ -19,3 +19,8 @@ until the end of a task. Each commit must leave `just full-check` passing.
 - Prettier formats `.astro` and `.md` files. Keep `.prettierrc.mjs` in sync with `.oxfmtrc.json`.
 - `.prettierignore` excludes the Slidev entrypoints (`slides/*/slides.md`). Prettier turns their
   `---` slide separators into prose, which breaks the deck.
+
+## Blog Illustrations
+
+For `public/post/autonomy-trifecta/`, keep a consistent, predominantly white theme with soft pastel
+colors. Add a small X logo and `@PaulRBerg` in the bottom-right corner of every image.
