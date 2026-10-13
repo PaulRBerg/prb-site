@@ -27,6 +27,11 @@ until the end of a task. Each commit must leave `just full-check` passing.
 - Use `Iasi` without diacritics in event names.
 - Separate PowerPoint download links from titles with a middle dot: `Sablier · PowerPoint`.
 
+Do not add these talks to the speaking archive. They are near-duplicates of other talks:
+
+- **PRBMath — ETH École, July 21, 2021** (`eth-ecole-2021`).
+- **Chronos Protocol — Work on Blockchain bootcamp, February 2019**.
+
 ## Blog Link Previews
 
 Use `.mdx` for posts that import `src/components/LinkPreview.astro`. Render standalone links with
