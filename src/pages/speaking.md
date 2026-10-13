@@ -3,6 +3,19 @@ layout: ../layouts/AboutLayout.astro
 title: "Speaking"
 ---
 
+## Slides
+
+| Title                                                                               | Event                 | Date         |
+| ----------------------------------------------------------------------------------- | --------------------- | ------------ |
+| [PRB Agent Skills](/presentations/frontiers-2026/)                                  | Frontiers             | 2026         |
+| [The Ultimate Rational Meme](/presentations/cce-2026/)                              | Conjecture Con Europe | May 2026     |
+| [IQ: The Good, the Bad, and the Popperian](/presentations/ratfest-2025/)            | RatFest               | Sep 27, 2025 |
+| [Schrodinger's TVL: Until You Hack It, It's Not Real](/presentations/ethcluj-2025/) | ETHCluj               | Jun 27, 2025 |
+| [The Moral Philosophy of Icy Brains](/presentations/ratfest-2024/)                  | RatFest               | Sep 28, 2024 |
+| [Branching Tree Technique](/presentations/solidity-summit-2023/)                    | Solidity Summit       | Nov 16, 2023 |
+| [Branching Tree Technique](/presentations/spearbit-2023/)                           | Spearbit              | Sep 28, 2023 |
+| [Testing Best Practices in Foundry](/presentations/ethcc-2023/)                     | EthCC                 | Jul 20, 2023 |
+
 ## Podcasts
 
 | Title                                                                                                                              | Show               | Date         |

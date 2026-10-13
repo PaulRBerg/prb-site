@@ -13,7 +13,7 @@ default:
 
 # Start Astro dev server
 @dev:
-    na astro dev
+    na run dev
 alias d := dev
 
 # Build for production
