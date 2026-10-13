@@ -16,9 +16,17 @@ until the end of a task. Each commit must leave `just full-check` passing.
 ## Formatting
 
 - oxfmt formats TS, JS, and JSON. Its `ignorePatterns` live in `.oxfmtrc.json`.
-- Prettier formats `.astro` and `.md` files. Keep `.prettierrc.mjs` in sync with `.oxfmtrc.json`.
+- Prettier formats `.astro`, `.md`, and `.mdx` files. Keep `.prettierrc.mjs` in sync with
+  `.oxfmtrc.json`.
 - `.prettierignore` excludes the Slidev entrypoints (`slides/*/slides.md`). Prettier turns their
   `---` slide separators into prose, which breaks the deck.
+
+## Blog Link Previews
+
+Use `.mdx` for posts that import `src/components/LinkPreview.astro`. Render standalone links with
+`<LinkPreview href="https://example.com" />`. Metadata is fetched at build time. Unavailable pages
+fall back to ordinary links. Run `node --test src/utils/linkPreview.test.ts` after changing metadata
+parsing or fetching.
 
 ## Blog Illustrations
 
