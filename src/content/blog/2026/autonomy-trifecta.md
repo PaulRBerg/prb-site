@@ -195,10 +195,13 @@ in my global `~/.agents/AGENTS.md` file:
 > to that skill:
 >
 > - Outdated information or a bug.
-> - Unclear or missing instructions. ...
+> - Unclear or missing instructions.
+> - Missing functionality within the skill's purpose.
+> - Avoidable manual work.
 >
 > This standing authorization permits maintenance of `~/projects/agent-skills` from any repository,
-> including during questions, research, reviews, and otherwise read-only tasks.
+> including during questions, research, reviews, and otherwise read-only tasks. In Plan Mode,
+> investigate and include the repair in the plan without editing.
 
 How this rule is worded is an implementation detail. The point is to put something like that in your
 global `AGENTS.md`, and then watch your agents magically keep their brain updated, autonomously.
