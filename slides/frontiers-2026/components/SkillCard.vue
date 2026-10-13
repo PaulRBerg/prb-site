@@ -2,7 +2,8 @@
 defineProps<{
   name: string
   description: string
-  icon?: string // unocss icon class, e.g. 'i-carbon-branch'
+  // UnoCSS icon class, e.g. 'i-carbon-branch'
+  icon?: string
 }>()
 </script>
 
