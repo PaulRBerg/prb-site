@@ -89,6 +89,34 @@
     pre {
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
     }
+
+    [data-footnotes] {
+      @apply relative mt-12 pt-6 text-sm leading-relaxed;
+
+      &::before {
+        @apply absolute start-0 top-0 w-16 border-t border-foreground/30 content-[''];
+      }
+
+      > ol {
+        @apply my-0 ps-5;
+      }
+
+      li {
+        @apply ps-1 text-foreground/75 marker:text-foreground/70;
+      }
+
+      li + li {
+        @apply mt-4;
+      }
+
+      p {
+        @apply my-2 text-inherit;
+      }
+
+      [data-footnote-backref] {
+        @apply ms-1 inline-flex size-6 items-center justify-center align-middle text-accent no-underline hover:underline;
+      }
+    }
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
