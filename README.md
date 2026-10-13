@@ -4,13 +4,17 @@ PRB's personal site and blog.
 
 ## Presentations
 
-The eight decks imported from [prberg](https://github.com/PaulRBerg/prberg) are linked from
-[`/speaking`](https://prberg.vercel.app/speaking). Their original `/presentations/<slug>/` URLs,
-`index.html` entry points, and slide hashes remain compatible.
+The presentation archive is linked from [`/speaking`](https://prberg.vercel.app/speaking). The eight
+decks originally imported from [prberg](https://github.com/PaulRBerg/prberg) retain their original
+`/presentations/<slug>/` URLs, `index.html` entry points, and slide hashes.
 
-Editable sources live in `slides/`. The six HTML decks share an Astro layout and bundled Reveal.js
+Editable sources live in `slides/`. The HTML decks share an Astro layout and bundled Reveal.js
 runtime, with their original themes and media in `public/presentations/<slug>/`. The CCE and
 Frontiers 2026 decks retain their Slidev Markdown, Vue components, and assets.
+
+Historical PDF, PowerPoint, and Keynote decks live in `public/presentations/<slug>/` and are linked
+directly from the speaking page. PDFs open in the browser; PowerPoint and Keynote links download the
+original files. The ETH École 2021 deck uses the shared Reveal layout and locally hosted images.
 
 `just dev` and `just build` first build both Slidev decks into ignored
 `public/presentations/<slug>/` directories. `bun run build:slides` rebuilds just those decks. Astro

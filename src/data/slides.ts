@@ -76,5 +76,16 @@ export const revealSlides: RevealSlide[] = [
     slug: "ethcc-2023",
     theme: "serif",
     title: "Testing Best Practices in Foundry"
+  },
+  {
+    description: "Paul Berg @ ETH École, July 21, 2021",
+    favicon: "/favicon.svg",
+    image: "/presentations/eth-ecole-2021/img/prbmath-cover.png",
+    imageHeight: 675,
+    imageType: "image/png",
+    imageWidth: 1200,
+    slug: "eth-ecole-2021",
+    theme: "white",
+    title: "PRBMath"
   }
 ];
