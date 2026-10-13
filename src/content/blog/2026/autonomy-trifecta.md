@@ -3,6 +3,7 @@ title: "The Agent Autonomy Trifecta: Memory, Self-Improvement, and Coordination"
 description:
   "How I use skills, AGENTS.md, and coordination tools to build AI agents that retain knowledge,
   improve their own workflows, and work safely in parallel"
+ogImage: "/post/autonomy-trifecta/cover.jpg"
 pubDatetime: 2026-10-13T10:14:22Z
 tags:
   - "ai"
@@ -11,7 +12,7 @@ tags:
   - "automation"
 ---
 
-> TODO: add cover image
+![Memory, self-improvement, and coordination connected as the three parts of an autonomous agent system](/post/autonomy-trifecta/cover.jpg)
 
 The power of agentic engineering dawned on me in June 2025. I was immediately hooked. A few months
 later, I was spending all day in Claude Code, and then Codex.
@@ -135,7 +136,7 @@ As you can see, `AGENTS.md` files are about **constraints** and **always-on rule
 very nature, are probabilistic. `AGENTS.md` is how we turn that probabilistic haze into
 deterministic output.
 
-> TODO: add image
+![Variable agent outputs pass through an AGENTS.md gate with lint, test, and rule checks to become consistent, checked outputs](/post/autonomy-trifecta/agents-md-constraints.webp)
 
 ### Choose Your Own Adventure
 
@@ -177,7 +178,7 @@ You create a skill when you notice yourself typing the same prompt again and aga
 
 Example:
 
-> TODO: add image
+![Repeated long prompts to review code become a reusable SKILL.md file, invoked with the short command /review](/post/autonomy-trifecta/reusable-skills.webp)
 
 ## Property 2: Reflexivity (or Recursive Self-Improvement)
 
@@ -203,7 +204,7 @@ How this rule is worded is an implementation detail. The point is to put somethi
 global `AGENTS.md`, and then watch your agents magically keep their brain updated, autonomously.
 You're no longer a meat proxy :)
 
-> TODO: add image
+![A continuous feedback loop: use memory, do work, find a gap, improve the skill, and reuse the updated memory](/post/autonomy-trifecta/reflexivity.webp)
 
 ### Continuous Code Review/Polish
 
