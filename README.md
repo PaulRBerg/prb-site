@@ -1,3 +1,7 @@
+> [!IMPORTANT] This repository is deprecated. Continue development in
+> [PaulRBerg/PaulRBerg.github.io](https://github.com/PaulRBerg/PaulRBerg.github.io). The live site
+> is [prberg.com](https://prberg.com).
+
 # PRB Site
 
 PRB's personal site and blog.
