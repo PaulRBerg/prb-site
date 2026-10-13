@@ -1,5 +1,3 @@
-declare module "remark-collapse";
-
 interface Window {
   navigationState?: {
     setBackUrl: (backUrl: string) => void;

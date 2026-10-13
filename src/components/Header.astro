@@ -77,12 +77,16 @@ const isActive = (path: string) => {
         <li class="col-span-1 flex items-center justify-center">
           <LinkButton
             href="/search"
+            data-search-trigger
             class:list={[
               "focus-outline flex p-3 sm:p-1",
               { "[&>svg]:stroke-accent": isActive("/search") },
             ]}
-            title="Search"
-            aria-label="search"
+            title="Search (⌘K / Ctrl+K)"
+            aria-label="Search"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-keyshortcuts="Meta+K Control+K"
           >
             <IconSearch />
             <span class="sr-only">Search</span>

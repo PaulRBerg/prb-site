@@ -1,17 +1,13 @@
 import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import tailwindcss from "@tailwindcss/vite";
-import {
-  transformerNotationDiff,
-  transformerNotationHighlight,
-  transformerNotationWordHighlight
-} from "@shikijs/transformers";
+import { astroExpressiveCode } from "astro-expressive-code";
 import { defineConfig, envField, fontProviders } from "astro/config";
-import remarkCollapse from "remark-collapse";
-import remarkToc from "remark-toc";
 import { SITE } from "./src/config";
-import { transformerFileName } from "./src/utils/transformers/fileName";
+import remarkArticleImages, { rehypeArticleImages } from "./src/utils/remarkArticleImages";
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,22 +35,32 @@ export default defineConfig({
     layout: "constrained",
     responsiveStyles: true
   },
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    astroExpressiveCode({
+      defaultProps: {
+        collapseStyle: "collapsible-auto",
+        showLineNumbers: false,
+        wrap: true
+      },
+      plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+      styleOverrides: {
+        borderRadius: "0.375rem",
+        codeFontFamily: "var(--font-google-sans-code), monospace",
+        codeFontSize: "0.875rem",
+        uiFontFamily: "var(--font-google-sans-code), monospace"
+      },
+      themeCssSelector: (theme) => `[data-theme="${theme.type}"]`,
+      themes: ["min-light", "night-owl"],
+      useDarkModeMediaQuery: false
+    }),
+    mdx(),
+    sitemap()
+  ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]]
-    }),
-    shikiConfig: {
-      defaultColor: false,
-      themes: { dark: "night-owl", light: "min-light" },
-      transformers: [
-        transformerFileName({ hideDot: false, style: "v2" }),
-        transformerNotationHighlight(),
-        transformerNotationWordHighlight(),
-        transformerNotationDiff({ matchAlgorithm: "v3" })
-      ],
-      wrap: false
-    }
+      rehypePlugins: [rehypeArticleImages],
+      remarkPlugins: [remarkArticleImages]
+    })
   },
   site: SITE.website,
   vite: {

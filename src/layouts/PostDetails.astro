@@ -5,12 +5,16 @@ import ShareLinks from "@/components/ShareLinks.astro";
 import Tag from "@/components/Tag.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
+import ArticleToc from "@/components/ArticleToc.astro";
+import ReadingPreferences from "@/components/ReadingPreferences.astro";
+import ImageDialog from "@/components/ImageDialog.astro";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
 import SiteShell from "@/layouts/SiteShell.astro";
 import { getPath } from "@/utils/getPath";
-import { getPostTransitionName } from "@/utils/postPresentation";
+import { getPostTransitionName, getReadingTime } from "@/utils/postPresentation";
+import "@/styles/article.css";
 import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
@@ -34,7 +38,8 @@ const {
   hideEditPost,
 } = post.data;
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const readingTime = getReadingTime(post.body ?? "");
 
 let ogImageUrl: string | undefined;
 if (typeof initialOgImage === "string") {
@@ -98,12 +103,9 @@ const nextPost = currentPostIndex < allPosts.length - 1 ? allPosts[currentPostIn
   <div
     aria-hidden="true"
     data-post-progress
-    class="pointer-events-none fixed inset-x-0 top-0 z-[100] h-1 overflow-hidden bg-background opacity-0 transition-opacity duration-150"
+    class="article-progress pointer-events-none fixed inset-x-0 top-0 z-[100] h-1 overflow-hidden bg-background"
   >
-    <div
-      data-post-progress-bar
-      class="h-full w-0 bg-accent transition-[width] duration-100 ease-out"
-    ></div>
+    <div data-post-progress-bar class="article-progress-bar h-full w-full bg-accent"></div>
   </div>
   <BackButton />
   <main
@@ -117,8 +119,8 @@ const nextPost = currentPostIndex < allPosts.length - 1 ? allPosts[currentPostIn
     >
       {title}
     </h1>
-    <div class="my-2 flex items-center gap-2">
-      <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
+    <div class="my-2 flex flex-wrap items-center gap-2">
+      <Datetime {pubDatetime} {modDatetime} {timezone} {readingTime} size="lg" />
       <span
         aria-hidden="true"
         class:list={["max-sm:hidden", { hidden: !SITE.editPost.enabled || hideEditPost }]}
@@ -127,12 +129,14 @@ const nextPost = currentPostIndex < allPosts.length - 1 ? allPosts[currentPostIn
       </span>
       <EditPost {hideEditPost} {post} class="max-sm:hidden" />
     </div>
-    <article
-      id="article"
-      class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
-    >
-      <Content />
-    </article>
+    <ReadingPreferences />
+    <div class="article-reading-layout mt-8">
+      <ArticleToc {headings} />
+      <article id="article" class="app-prose article-body w-full max-w-app">
+        <Content />
+      </article>
+    </div>
+    <ImageDialog />
 
     <hr class="my-8 border-dashed" />
 
@@ -174,140 +178,4 @@ const nextPost = currentPostIndex < allPosts.length - 1 ? allPosts[currentPostIn
   </main>
 </SiteShell>
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const noop = () => null;
-
-    const setupScrollProgress = () => {
-      const progressTrack = document.querySelector("[data-post-progress]");
-      const progressBar = document.querySelector("[data-post-progress-bar]");
-
-      if (!progressTrack || !progressBar) {
-        return noop;
-      }
-
-      let frameId = 0;
-      const syncProgress = () => {
-        frameId = 0;
-
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const scrollHeight =
-          document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const progress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
-
-        progressBar.style.width = `${progress * 100}%`;
-        progressTrack.classList.toggle("opacity-0", progress === 0);
-        progressTrack.classList.toggle("opacity-100", progress > 0);
-      };
-
-      const queueSync = () => {
-        if (frameId !== 0) {
-          return;
-        }
-
-        frameId = window.requestAnimationFrame(syncProgress);
-      };
-
-      window.addEventListener("scroll", queueSync, { passive: true });
-      window.addEventListener("resize", queueSync);
-      queueSync();
-
-      return () => {
-        if (frameId !== 0) {
-          window.cancelAnimationFrame(frameId);
-        }
-
-        window.removeEventListener("scroll", queueSync);
-        window.removeEventListener("resize", queueSync);
-      };
-    };
-
-    const addHeadingLinks = () => {
-      const headings = [
-        ...document.querySelectorAll("article h2, article h3, article h4, article h5, article h6"),
-      ];
-      for (const heading of headings) {
-        if (!heading.id || heading.querySelector(".heading-link")) {
-          continue;
-        }
-
-        heading.classList.add("group");
-        const link = document.createElement("a");
-        link.className =
-          "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
-        link.href = `#${heading.id}`;
-
-        const span = document.createElement("span");
-        span.ariaHidden = "true";
-        span.textContent = "#";
-        link.append(span);
-        heading.append(link);
-      }
-    };
-
-    const attachCopyButtons = () => {
-      const copyButtonLabel = "Copy";
-      const copyCode = async (block, button) => {
-        const code = block.querySelector("code");
-        const text = code?.textContent;
-
-        await navigator.clipboard.writeText(text ?? "");
-        button.textContent = "Copied";
-
-        setTimeout(() => {
-          button.textContent = copyButtonLabel;
-        }, 700);
-      };
-
-      const codeBlocks = [...document.querySelectorAll("article pre")];
-      for (const codeBlock of codeBlocks) {
-        if (codeBlock.dataset.copyBound === "true") {
-          continue;
-        }
-
-        const wrapper = document.createElement("div");
-        wrapper.dataset.copyWrapper = "true";
-        wrapper.style.position = "relative";
-
-        const computedStyle = getComputedStyle(codeBlock);
-        const hasFileNameOffset =
-          computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
-        const topClass = hasFileNameOffset ? "top-(--file-name-offset)" : "-top-3";
-
-        const copyButton = document.createElement("button");
-        copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
-        copyButton.textContent = copyButtonLabel;
-        codeBlock.dataset.copyBound = "true";
-        codeBlock.setAttribute("tabindex", "0");
-        codeBlock.append(copyButton);
-
-        codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
-        wrapper.append(codeBlock);
-
-        copyButton.addEventListener("click", async () => {
-          await copyCode(codeBlock, copyButton);
-        });
-      }
-    };
-
-    const cleanupScrollProgress = setupScrollProgress();
-    addHeadingLinks();
-    attachCopyButtons();
-
-    document.addEventListener(
-      "astro:before-swap",
-      () => {
-        cleanupScrollProgress();
-      },
-      { once: true },
-    );
-
-    document.addEventListener(
-      "astro:after-swap",
-      () => {
-        window.scrollTo({ behavior: "instant", left: 0, top: 0 });
-      },
-      { once: true },
-    );
-  })();
-</script>
+<script src="../scripts/article.ts"></script>

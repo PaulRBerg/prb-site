@@ -8,7 +8,7 @@ tags:
   - "ethereum"
 ---
 
-![Ethereum Wallpaper](/post/figuring-out-ethereum/ethereum-wallpaper.jpg)
+![Ethereum Wallpaper](../../../assets/posts/figuring-out-ethereum/ethereum-wallpaper.jpg)
 
 ## Context
 
@@ -21,7 +21,7 @@ than a year, I thought it'd be a good moment to log my progress. Should be fun, 
 
 ## The Why
 
-![Bitcoin is a Conspiracy](/post/figuring-out-ethereum/bitcoin-is-a-conspiracy.png)
+![Bitcoin is a Conspiracy](../../../assets/posts/figuring-out-ethereum/bitcoin-is-a-conspiracy.png)
 
 Couldn't have said it better (other than referring to blockchains rather than Bitcoin alone), yet
 there is a catch. I — and I guess I'm not alone — learned a couple of finance 101 life-long lessons.
@@ -60,7 +60,7 @@ a steady, continuous boost of the importance of educated generalism.
 
 ## Unstable Assumptions
 
-![Breaking Glass](/post/figuring-out-ethereum/breaking-glass.gif)
+![Breaking Glass](../../../assets/posts/figuring-out-ethereum/breaking-glass.gif)
 
 A leitmotif of the blockchain ecosystem is the perpetual process of challenging assumptions.
 
@@ -81,7 +81,7 @@ number of unknown unknowns out there.
 
 ## Long-Term Goals
 
-![Looking Above](/post/figuring-out-ethereum/looking-above.jpg)
+![Looking Above](../../../assets/posts/figuring-out-ethereum/looking-above.jpg)
 
 To be fair, no one anyone has truly figured it out where we want blockchains to fit in the world's
 political agenda. It seems that the phenomenon has just matured after living in a nest for a long
@@ -115,7 +115,7 @@ You might also want to take a look at:
 
 You might wonder what the heck I'm actually doing.
 
-<img src="/post/figuring-out-ethereum/curious.gif" alt="Staying Curious" width="350" height="350"/>
+<img src="../../../assets/posts/figuring-out-ethereum/curious.gif" alt="Staying Curious" width="350" height="350"/>
 
 ### Ethereum-related
 

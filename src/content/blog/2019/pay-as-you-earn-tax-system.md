@@ -9,7 +9,7 @@ tags:
   - "ethereum"
 ---
 
-![Cover](/post/pay-as-you-earn-tax-system/cover.jpg)
+![Cover](../../../assets/posts/pay-as-you-earn-tax-system/cover.jpg)
 
 ## Context
 
@@ -56,7 +56,7 @@ The US uses a [progressive tax](https://www.investopedia.com/terms/p/progressive
 which means that the first $9,700 earned after deductions is taxed at 10%, the next $29,774 at 12%,
 the next \$44,724 at 22% and so forth.
 
-![US 2018-2019](/post/pay-as-you-earn-tax-system/us-2018-2019.jpg)
+![US 2018-2019](../../../assets/posts/pay-as-you-earn-tax-system/us-2018-2019.jpg)
 
 Now, we need to make a few assumptions.
 

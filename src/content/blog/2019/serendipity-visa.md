@@ -8,7 +8,7 @@ tags:
   - "discussion"
 ---
 
-![Cover](/post/serendipity-visa/cover.jpg)
+![Cover](../../../assets/posts/serendipity-visa/cover.jpg)
 
 ## Preamble
 
@@ -101,7 +101,7 @@ benefits to the world as a whole.
 It can get a bit tricky to quantify the positive outcomes of immigration, but this is pretty
 suggestive:
 
-![Built By Immigrants](/post/serendipity-visa/built-by-immigrants.jpg)
+![Built By Immigrants](../../../assets/posts/serendipity-visa/built-by-immigrants.jpg)
 
 And I'm sure the list can go on. In the UK, most rising fintech startups were built by immigrants
 dissatisfied by how financial products used to work across Europe.

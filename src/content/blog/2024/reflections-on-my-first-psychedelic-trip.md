@@ -10,7 +10,7 @@ tags:
   - "self-improvement"
 ---
 
-![The Radcliffe Camera in Oxford](/post/reflections-on-my-first-psychedelic-trip/cover.jpg)
+![The Radcliffe Camera in Oxford](../../../assets/posts/reflections-on-my-first-psychedelic-trip/cover.jpg)
 
 My first psychedelic trip was one of the top 5 most amazing experiences of my life. Here's the story
 of how I did it, how it changed me, and the lessons I took away from it.
