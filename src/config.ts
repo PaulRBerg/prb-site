@@ -1,6 +1,5 @@
 export const SITE = {
   author: "Paul Berg",
-  avatar: "https://github.com/PaulRBerg.png?size=360",
   desc: "Paul Berg has co-founded Sablier and is known for his contributions to the Ethereum ecosystem, particularly through the creation of Sablier, Solidity libraries such as PRBMath, and educational content posted on StackExchange.",
   dir: "ltr",
   dynamicOgImage: true,
