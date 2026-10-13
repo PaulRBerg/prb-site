@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [".serena/", ".vercel/", ".vscode/", "slides/", "src/content/"],
   "printWidth": 100,
   "trailingComma": "none"
 }
