@@ -325,6 +325,12 @@
   overflow-wrap: anywhere;
 }
 
+@media (width < 48rem) {
+  body:has(#article) > footer {
+    padding-block-end: 6rem;
+  }
+}
+
 @media (min-width: 85rem) {
   .article-toc-mobile {
     display: none;
