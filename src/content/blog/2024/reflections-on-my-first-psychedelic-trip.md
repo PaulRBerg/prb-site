@@ -2,7 +2,7 @@
 title: "Reflections on My First Psychedelic Trip"
 description:
   "How a solo LSD trip in Oxford changed my perspective on consciousness, ego, and daily habits"
-ogImage: "/post/reflections-on-my-first-psychedelic-trip/cover.jpg"
+ogImage: "../../../assets/posts/reflections-on-my-first-psychedelic-trip/cover.jpg"
 pubDatetime: 2024-06-12T23:48:00Z
 tags:
   - "psychedelics"

@@ -1,7 +1,7 @@
 ---
 title: "Pay As You Earn Tax System on Ethereum"
 description: "Discourse on how to design a blockchain-based income tax system"
-ogImage: "/post/pay-as-you-earn-tax-system/preview.jpg"
+ogImage: "../../../assets/posts/pay-as-you-earn-tax-system/preview.jpg"
 pubDatetime: 2019-06-16T19:53:38Z
 tags:
   - "blockchain"

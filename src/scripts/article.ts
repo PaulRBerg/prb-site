@@ -264,6 +264,19 @@ const setupFootnotes = (article: HTMLElement, signal: AbortSignal) => {
   };
 };
 
+// Astro's widest responsive candidate keeps the source image's full dimensions.
+const largestImageSource = (source: HTMLImageElement) => {
+  let largest = { url: source.currentSrc || source.src, width: 0 };
+  for (const candidate of source.srcset.split(/,\s+/u)) {
+    const [url, descriptor] = candidate.trim().split(/\s+/u);
+    const width = Number(descriptor?.replace(/w$/u, ""));
+    if (url && width > largest.width) {
+      largest = { url, width };
+    }
+  }
+  return largest.url;
+};
+
 const setupImageDialog = (article: HTMLElement, signal: AbortSignal) => {
   const dialog = document.querySelector<HTMLDialogElement>("[data-image-dialog]");
   const image = dialog?.querySelector<HTMLImageElement>("[data-image-dialog-image]");
@@ -303,7 +316,7 @@ const setupImageDialog = (article: HTMLElement, signal: AbortSignal) => {
     }
     const description = source.alt.trim();
     activeTrigger = trigger;
-    image.src = source.dataset.zoomSrc ?? (source.currentSrc || source.src);
+    image.src = largestImageSource(source);
     image.alt = source.alt;
     caption.textContent = source.alt;
     caption.hidden = !description;

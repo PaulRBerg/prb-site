@@ -1,7 +1,7 @@
 ---
 title: "Figuring out Ethereum"
 description: "My boring journey of becoming a blockchain aficionado"
-ogImage: "/post/figuring-out-ethereum/preview.jpg"
+ogImage: "../../../assets/posts/figuring-out-ethereum/preview.jpg"
 pubDatetime: 2018-12-10T00:22:10Z
 tags:
   - "blockchain"

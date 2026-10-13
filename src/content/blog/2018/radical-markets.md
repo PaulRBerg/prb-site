@@ -1,7 +1,7 @@
 ---
 title: "Intro to Radical Markets"
 description: "Straightforward presentation of the policies proposed in Radical Markets"
-ogImage: "/post/intro-to-radical-markets/preview.jpg"
+ogImage: "../../../assets/posts/intro-to-radical-markets/preview.jpg"
 pubDatetime: 2018-12-24T00:19:11Z
 tags:
   - "blockchain"

@@ -1,7 +1,7 @@
 ---
 title: "How to Do Your Crypto Taxes by Yourself"
 description: "Spreadsheet templates and practical tips and tricks"
-ogImage: "/post/dyi-crypto-taxes/preview.png"
+ogImage: "../../../assets/posts/dyi-crypto-taxes/preview.png"
 pubDatetime: 2020-05-14T01:27:05Z
 tags:
   - "ethereum"

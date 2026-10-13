@@ -1,7 +1,7 @@
 ---
 title: "Critique on Radical Markets"
 description: "In-depth analysis of the policies proposed in the book"
-ogImage: "/post/critique-on-radical-markets/preview.jpg"
+ogImage: "../../../assets/posts/critique-on-radical-markets/preview.jpg"
 pubDatetime: 2018-12-31T19:22:34Z
 tags:
   - "blockchain"

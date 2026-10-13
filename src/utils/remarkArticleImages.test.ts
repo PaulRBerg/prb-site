@@ -1,9 +1,7 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
-import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
-import { createMarkdownProcessor, parseFrontmatter, unified } from "@astrojs/markdown-remark";
+import { createMarkdownProcessor, unified } from "@astrojs/markdown-remark";
 import type { RootContent } from "hast";
 import { fromHtml } from "hast-util-from-html";
 import remarkArticleImages, { rehypeArticleImages } from "./remarkArticleImages.ts";
@@ -23,7 +21,7 @@ const imageMarkers = (nodes: RootContent[]): Record<string, unknown>[] =>
     return "children" in node ? imageMarkers(node.children) : [];
   });
 
-await test("Astro Markdown retains priority, original zoom URLs, and sized GIF assets", async () => {
+await test("Astro Markdown retains priority and sized GIF assets", async () => {
   const processor = await createMarkdownProcessor({ ...plugins, syntaxHighlight: false });
   const rendered = await processor.render(
     `![Cover](../../../assets/posts/sample/cover.jpg)
@@ -40,7 +38,6 @@ await test("Astro Markdown retains priority, original zoom URLs, and sized GIF a
   assert.equal(rendered.metadata.localImagePaths.length, 3);
   assert.equal(markers[0]?.loading, "eager");
   assert.equal(markers[0]?.fetchpriority, "high");
-  assert.equal(markers[0]?.["data-zoom-src"], "/post/sample/cover.jpg");
   assert.equal(markers[0]?.sizes, "(min-width: 48rem) 46rem, calc(100vw - 2rem)");
   for (const marker of markers.slice(1)) {
     assert.equal(marker.loading, "lazy");
@@ -50,7 +47,6 @@ await test("Astro Markdown retains priority, original zoom URLs, and sized GIF a
   assert.equal(markers[2]?.width, 350);
   assert.equal(markers[2]?.height, 350);
   assert.equal(markers[2]?.sizes, "(min-width: calc(350px + 2rem)) 350px, calc(100vw - 2rem)");
-  assert.equal(markers[2]?.["data-zoom-src"], "/post/sample/animation.gif");
   assert.match(rendered.code, /src="https:\/\/example\.com\/image\.jpg"/u);
 });
 
@@ -71,39 +67,9 @@ await test("Astro MDX passes literal HTML metadata to Image and leaves LinkPrevi
   );
   assert.match(rendered.code, /from "astro:assets"/u);
   assert.match(rendered.code, /from "\.\.\/\.\.\/\.\.\/assets\/posts\/sample\/cover\.jpg"/u);
-  assert.match(rendered.code, /"data-zoom-src": "\/post\/sample\/cover\.jpg"/u);
   assert.match(rendered.code, /fetchpriority: "high"/u);
-  assert.doesNotMatch(rendered.code, /dataZoomSrc|fetchPriority/u);
+  assert.doesNotMatch(rendered.code, /fetchPriority/u);
   assert.match(rendered.code, /loading: "eager"/u);
   assert.match(rendered.code, /loading: "lazy"/u);
   assert.match(rendered.code, /_jsx\(LinkPreview, \{\s*href: "https:\/\/example\.com"\s*\}\)/u);
-});
-
-await test("published blog image assets are exact copies of their preserved public originals", () => {
-  const blogDirectory = fileURLToPath(new URL("../content/blog/", import.meta.url));
-  const publicDirectory = fileURLToPath(new URL("../../public/post/", import.meta.url));
-  let imageCount = 0;
-  for (const filename of readdirSync(blogDirectory, { encoding: "utf-8", recursive: true })) {
-    if (!/\.mdx?$/u.test(filename)) {
-      continue;
-    }
-    const sourcePath = path.resolve(blogDirectory, filename);
-    const { content } = parseFrontmatter(readFileSync(sourcePath, "utf-8"));
-    assert.doesNotMatch(content, /!\[[^\]]*\]\(\/post\//u, sourcePath);
-    assert.doesNotMatch(content, /<img\b[^>]*\bsrc="\/post\//u, sourcePath);
-    for (const match of content.matchAll(
-      /\.\.\/\.\.\/\.\.\/assets\/posts\/(?<original>[^\s)"]+)/gu
-    )) {
-      const [assetPath] = match;
-      const originalPath = match.groups?.original;
-      assert.ok(originalPath !== undefined && originalPath !== "");
-      assert.deepEqual(
-        readFileSync(path.resolve(path.dirname(sourcePath), assetPath)),
-        readFileSync(path.resolve(publicDirectory, originalPath)),
-        assetPath
-      );
-      imageCount += 1;
-    }
-  }
-  assert.ok(imageCount > 0);
 });

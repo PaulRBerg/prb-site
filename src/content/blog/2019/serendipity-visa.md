@@ -1,7 +1,7 @@
 ---
 title: "Serendipity Visa: A Discourse On Talent Allocation"
 description: "Allocate talent more efficiently by hotfixing immigration policy"
-ogImage: "/post/serendipity-visa/preview.jpg"
+ogImage: "../../../assets/posts/serendipity-visa/preview.jpg"
 pubDatetime: 2019-02-07T01:02:56Z
 tags:
   - "economics"

@@ -9,9 +9,10 @@ preferences, image zoom, footnote previews, and links to individual headings. Re
 apply to article prose; navigation and code retain the site's monospace font.
 
 Store article images in `src/assets/posts/<slug>/` and use relative Markdown image paths so Astro
-emits responsive, optimized images with dimensions. Keep matching originals in `public/post/<slug>/`
-for full-size zoom and existing public URLs. The article image plugins prioritize the first image
-and lazy-load the remaining images.
+emits responsive, optimized images with dimensions. Reference `ogImage` previews from the same
+directory with relative paths. Image zoom opens the widest responsive variant, which keeps the
+source's full dimensions. The article image plugins prioritize the first image and lazy-load the
+remaining images.
 
 Code fences use [Expressive Code](https://expressive-code.com/) with theme-aware highlighting,
 wrapping, and copy buttons. Add `title="example.ts"` for an editor frame, `showLineNumbers` to

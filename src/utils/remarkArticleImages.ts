@@ -38,7 +38,7 @@ const assetImageFromHtml = (node: Html): Image | undefined => {
   };
 };
 
-/** Preserve original zoom URLs while Astro optimizes article body images. */
+/** Prioritize the first article image and size the rest for Astro's asset pipeline. */
 const remarkArticleImages: RemarkPlugin = () => (tree) => {
   let imageCount = 0;
 
@@ -59,7 +59,6 @@ const remarkArticleImages: RemarkPlugin = () => (tree) => {
           const authoredWidth = node.data.hProperties?.width;
           node.data.hProperties = {
             ...node.data.hProperties,
-            "data-zoom-src": `/post/${assetPath}`,
             decoding: "async",
             ...(firstImage ? { fetchpriority: "high" } : {}),
             loading: firstImage ? "eager" : "lazy",
@@ -93,11 +92,7 @@ const normalizeImageProperties = (nodes: HtmlContent[]) => {
       typeof node.properties.src === "string" &&
       articleAsset.test(node.properties.src)
     ) {
-      const { dataZoomSrc, fetchPriority } = node.properties;
-      if (dataZoomSrc !== undefined) {
-        node.properties["data-zoom-src"] = dataZoomSrc;
-        delete node.properties.dataZoomSrc;
-      }
+      const { fetchPriority } = node.properties;
       if (fetchPriority !== undefined) {
         node.properties.fetchpriority = fetchPriority;
         delete node.properties.fetchPriority;
