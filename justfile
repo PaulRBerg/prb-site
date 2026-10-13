@@ -84,13 +84,13 @@ alias ofw := oxfmt-write
 # Check Astro and Markdown formatting with Prettier
 [group("checks")]
 @prettier-check:
-    bun run prettier --check "**/*.{astro,md}"
+    bun run prettier --check "**/*.{astro,md,mdx}"
 alias pc := prettier-check
 
 # Format Astro and Markdown files with Prettier
 [group("checks")]
 @prettier-write:
-    bun run prettier --write "**/*.{astro,md}"
+    bun run prettier --write "**/*.{astro,md,mdx}"
 alias pw := prettier-write
 
 # ---------------------------------------------------------------------------- #

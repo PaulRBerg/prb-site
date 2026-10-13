@@ -12,17 +12,20 @@ tags:
   - "automation"
 ---
 
+import LinkPreview from "@/components/LinkPreview.astro";
+import agentSkillsPreview from "@/assets/link-previews/agent-skills.png";
+
 ![Memory, self-improvement, and coordination connected as the three parts of an autonomous agent system](/post/autonomy-trifecta/cover.jpg)
 
 The power of agentic engineering dawned on me in June 2025. I was immediately hooked. A few months
 later, I was spending all day in Claude Code, and then Codex.
 
 I've spent copious amounts of time (to the point of developing a slight addiction) refining my AI
-agents, in order to extract maximum productivity out of this wonderful technology. I think others
+agents in order to extract maximum productivity out of this wonderful technology. I think others
 will find my learnings useful.
 
 This article is aimed at software engineers and technical operators. I've strived to write it in a
-timeless manner, focusing less so on specific harness features (or lack thereof), but more so on
+timeless manner, focusing less so on specific harness features (or lack thereof), and more so on
 generic principles on how to build a modern, autonomous agentic stack.
 
 ## TL;DR
@@ -30,7 +33,7 @@ generic principles on how to build a modern, autonomous agentic stack.
 Ask your agent to install this skill - it will review your agent setup and make it compliant with
 the autonomy trifecta:
 
-https://github.com/PaulRBerg/autonomy-trifecta
+<LinkPreview href="https://github.com/PaulRBerg/autonomy-trifecta" />
 
 ## The Trifecta
 
@@ -83,7 +86,7 @@ bonsai trees — which have to be groomed and pruned with care!
 This is the single, most important thing you can do right now: set up **your own AI agent skills
 library**. Mine is at:
 
-https://github.com/PaulRBerg/agent-skills
+<LinkPreview href="https://github.com/PaulRBerg/agent-skills" image={agentSkillsPreview.src} />
 
 Whether you create this library as a separate repo (as I did) or you embed the skills within an
 `~/.agents` or `~/.claude` repo, that is an implementation detail. The point is, you should have a
@@ -140,14 +143,14 @@ deterministic output.
 
 ### Choose Your Own Adventure
 
-It's up to you to decide what rules to enforce, and what software to use for those checks. The
-important thing is to think about this, and to actually do it. Different projects and problem
-situations require different checks!
+It's up to you to decide what rules to enforce, and which software to run for those checks. The
+important thing is: proactively think about this. Different projects and problem situations require
+different checks!
 
 For example, my personal finance dashboard is written in TypeScript. I lint that TypeScript code
-with ESLint. In another project, I use Blender for 3D modeling a house. There, I use a Python
-rendering library to enforce certain invariants regarding the 3D structure, such as adhering to
-local construction regulations. These rules are embedded in the `AGENTS.md` file in each repo.
+with ESLint. In another project, I use Blender for the 3D modeling of a house. There, I use a Python
+rendering library to enforce certain construction invariants, such as adhering to local construction
+regulations. These rules are embedded in the `AGENTS.md` file of each repo.
 
 Globally, I enforce things like git commit management, e.g., I want my agents to commit as soon as
 they complete a task, and also to push it to remote. You might not want it to work like this,
@@ -222,7 +225,7 @@ Again, sharing the rule from my global `AGENTS.md`:
 > committing. Judge size by scope and behavioral complexity, not line count. Skip it for small,
 > localized changes unless I explicitly request it.
 
-### The sky is the limit
+### The Sky is the Limit
 
 You can apply the principle of recursive self-improvement to any files that are of interest to you:
 diagrams, documentation files, or whatever.
@@ -237,7 +240,7 @@ this._
 
 I run multiple agents in parallel, often on the same repo. I do this using iTerm split panes:
 
-> TODO: add image
+> TODO: add screenshot
 
 I like split panes a lot. It's easy to spawn a new pane using CMD+D, and then close one using CMD+W.
 I find it a whole lot easier than using terminal multiplexers like `tmux` or
@@ -275,7 +278,7 @@ use everyday. Here's how it works:
 
 And I monitor their coordination via a localhost dashboard UI:
 
-> TODO: add image
+> TODO: add screenshot
 
 You can think of `ai-coord` as a 'traffic control' system, or a 'semaphore'. Agents are constrained
 to await other agents, just like drivers in traffic await other drivers ahead of them, follow
