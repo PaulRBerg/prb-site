@@ -24,8 +24,6 @@ until the end of a task. Each commit must leave `just full-check` passing.
 ## Speaking
 
 - Keep `src/pages/speaking.md` sections in this order: Podcasts, Talks, Slides.
-- Use `Iasi` without diacritics in event names.
-- Separate PowerPoint download links from titles with a middle dot: `Sablier · PowerPoint`.
 
 Read [slides/AGENTS.md](slides/AGENTS.md) before importing presentations or adding talks to the
 speaking archive.
@@ -36,8 +34,3 @@ Use `.mdx` for posts that import `src/components/LinkPreview.astro`. Render stan
 `<LinkPreview href="https://example.com" />`. Metadata is fetched at build time. Unavailable pages
 fall back to ordinary links. Run `node --test src/utils/linkPreview.test.ts` after changing metadata
 parsing or fetching.
-
-## Blog Illustrations
-
-For `public/post/autonomy-trifecta/`, keep a consistent, predominantly white theme with soft pastel
-colors. Add a small X logo and `@PaulRBerg` in the bottom-right corner of every image.
