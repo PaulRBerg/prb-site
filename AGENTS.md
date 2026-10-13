@@ -21,6 +21,12 @@ until the end of a task. Each commit must leave `just full-check` passing.
 - `.prettierignore` excludes the Slidev entrypoints (`slides/*/slides.md`). Prettier turns their
   `---` slide separators into prose, which breaks the deck.
 
+## Speaking
+
+- Keep `src/pages/speaking.md` sections in this order: Podcasts, Talks, Slides.
+- Use `Iasi` without diacritics in event names.
+- Separate PowerPoint download links from titles with a middle dot: `Sablier · PowerPoint`.
+
 ## Blog Link Previews
 
 Use `.mdx` for posts that import `src/components/LinkPreview.astro`. Render standalone links with
