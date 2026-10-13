@@ -14,7 +14,8 @@ Frontiers 2026 decks retain their Slidev Markdown, Vue components, and assets.
 
 Historical PDF, PowerPoint, and Keynote decks live in `public/presentations/<slug>/` and are linked
 directly from the speaking page. PDFs open in the browser; PowerPoint and Keynote links download the
-original files. The ETH École 2021 deck uses the shared Reveal layout and locally hosted images.
+original files. Speaking resource links open in new tabs while native files retain their download
+behavior. The ETH École 2021 deck uses the shared Reveal layout and locally hosted images.
 
 `just dev` and `just build` first build both Slidev decks into ignored
 `public/presentations/<slug>/` directories. `bun run build:slides` rebuilds just those decks. Astro
