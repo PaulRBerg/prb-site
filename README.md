@@ -13,7 +13,7 @@ runtime, with their original themes and media in `public/presentations/<slug>/`.
 Frontiers 2026 decks retain their Slidev Markdown, Vue components, and assets.
 
 `just dev` and `just build` first build both Slidev decks into ignored
-`public/presentations/<slug>/` directories. `na run build:slides` rebuilds just those decks. Astro
+`public/presentations/<slug>/` directories. `bun run build:slides` rebuilds just those decks. Astro
 then builds the site and Reveal pages; no vendored Reveal tree or deck-specific package installation
 is needed.
 

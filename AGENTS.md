@@ -3,6 +3,8 @@
 Personal website built with Astro and Bun. Slidev decks under `slides/` build into the git-ignored
 `public/presentations/`.
 
+Invoke package scripts and local binaries with `bun run <script|bin>`, not `na`.
+
 ## Checks
 
 Run `just full-write` and then `just full-check` after every change, before committing. Do not wait

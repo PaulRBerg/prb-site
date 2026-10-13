@@ -13,17 +13,17 @@ default:
 
 # Start Astro dev server
 @dev:
-    na run dev
+    bun run dev
 alias d := dev
 
 # Build for production
 @build:
-    na run build
+    bun run build
 alias b := build
 
 # Preview production build
 @preview:
-    na astro preview
+    bun run preview
 alias p := preview
 
 # ---------------------------------------------------------------------------- #
@@ -54,43 +54,43 @@ alias fw := full-write
 # Lint with oxlint
 [group("checks")]
 @oxlint-check:
-    na oxlint
+    bun run oxlint
 alias oc := oxlint-check
 
 # Run Astro type and content checks
 [group("checks")]
 @astro-check:
-    na astro check
+    bun run astro check
 alias ac := astro-check
 
 # Lint with oxlint
 [group("checks")]
 @oxlint-write:
-    na oxlint --fix
+    bun run oxlint --fix
 alias ow := oxlint-write
 
 # Check formatting with oxfmt
 [group("checks")]
 @oxfmt-check:
-    na oxfmt --check
+    bun run oxfmt --check
 alias ofc := oxfmt-check
 
 # Format with oxfmt
 [group("checks")]
 @oxfmt-write:
-    na oxfmt --write
+    bun run oxfmt --write
 alias ofw := oxfmt-write
 
 # Check Astro and Markdown formatting with Prettier
 [group("checks")]
 @prettier-check:
-    na prettier --check "**/*.{astro,md}"
+    bun run prettier --check "**/*.{astro,md}"
 alias pc := prettier-check
 
 # Format Astro and Markdown files with Prettier
 [group("checks")]
 @prettier-write:
-    na prettier --write "**/*.{astro,md}"
+    bun run prettier --write "**/*.{astro,md}"
 alias pw := prettier-write
 
 # ---------------------------------------------------------------------------- #
@@ -100,13 +100,13 @@ alias pw := prettier-write
 # Deploy preview to Vercel
 [group("deploy")]
 @deploy-preview:
-    na vercel
+    bun run vercel
 alias dp := deploy-preview
 
 # Deploy to production on Vercel
 [group("deploy")]
 @deploy-prod:
-    na vercel --prod
+    bun run vercel --prod
 alias dpr := deploy-prod
 
 # ---------------------------------------------------------------------------- #
