@@ -20,7 +20,9 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
     ]}
   >
     {SOCIALS.length > 0 && <Socials />}
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
+    <div
+      class="my-2 flex min-w-0 max-w-full flex-col items-center text-center sm:flex-row sm:text-start"
+    >
       <a href={SITE.repo} target="_blank" rel="noopener noreferrer" class="hover:text-accent">
         Steal this post &rarr; CC BY 4.0 &middot; Code MIT
       </a>
